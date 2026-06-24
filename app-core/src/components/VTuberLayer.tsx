@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Suspense, Component, ReactNode } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -60,14 +60,40 @@ function AvatarModel() {
   return <primitive object={gltf.scene} />;
 }
 
+
+class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean}> {
+  constructor(props: {children: ReactNode}) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="text-red-500 text-xs p-4 text-center">
+          Error al cargar avatar.vrm.<br />
+          Coloca el archivo en public/
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function VTuberLayer() {
   return (
     <div className="w-full h-full relative">
-      <Canvas camera={{ position: [0, 0, 1.5], fov: 30 }}>
-        <ambientLight intensity={1.2} />
-        <directionalLight position={[1, 2, 5]} intensity={1.5} />
-        <AvatarModel />
-      </Canvas>
+      <ErrorBoundary>
+        <Canvas camera={{ position: [0, 0, 1.5], fov: 30 }}>
+          <ambientLight intensity={1.2} />
+          <directionalLight position={[1, 2, 5]} intensity={1.5} />
+          <Suspense fallback={null}>
+            <AvatarModel />
+          </Suspense>
+        </Canvas>
+      </ErrorBoundary>
     </div>
   );
 }

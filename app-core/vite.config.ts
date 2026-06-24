@@ -12,6 +12,13 @@ export default defineConfig({
     electron([
       {
         entry: 'electron/main.ts',
+        vite: {
+          build: {
+            rollupOptions: {
+              external: ['@aws-sdk/client-s3']
+            }
+          }
+        }
       },
       {
         entry: 'electron/preload.ts',

@@ -1,4 +1,6 @@
-import { WebcastPushConnection } from 'tiktok-live-connector';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const { WebcastPushConnection } = require('tiktok-live-connector');
 import { EventEmitter } from 'events';
 
 export const tiktokEvents = new EventEmitter();
