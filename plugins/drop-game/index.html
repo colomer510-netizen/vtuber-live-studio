@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      background: #aa3bff;
+      border-radius: 8px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-100px); }
+    }
+  </style>
+</head>
+<body>
+  <h2>Drop Game (Demo Plugin)</h2>
+  <p>Esperando regalos de TikTok...</p>
+  <div class="box"></div>
+  <script>
+    // Este juego escucharía mensajes via window.postMessage o websockets
+    window.addEventListener("message", (event) => {
+      console.log("Plugin received event:", event.data);
+      // Animación al recibir un regalo...
+    });
+  </script>
+</body>
+</html>

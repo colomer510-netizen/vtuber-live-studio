@@ -1,0 +1,4 @@
+# Ignorar compilados
+dist-electron/
+dist/
+node_modules/
