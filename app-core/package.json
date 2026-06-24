@@ -7,8 +7,28 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "package": "npm run build && electron-builder",
     "lint": "oxlint src electron",
     "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.vtuber.livestudio",
+    "productName": "VTuber Live Studio",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist",
+      "dist-electron",
+      "public"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/favicon.svg"
+    }
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -35,6 +55,7 @@
     "autoprefixer": "^10.5.2",
     "concurrently": "^10.0.3",
     "electron": "^42.5.0",
+    "electron-builder": "^26.15.3",
     "electron-store": "^11.0.2",
     "oxlint": "^1.69.0",
     "postcss": "^8.5.15",
