@@ -5,6 +5,8 @@
 ![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react)
 ![Three.js](https://img.shields.io/badge/Three.js-VRM-black?logo=three.js)
 
+> ⚠️ **Development Note:** This project is currently in the active development phase. Features and APIs may change.
+
 **VTuber Live Studio** is an all-in-one, highly interactive streaming platform designed for VTubers and content creators. It bridges the gap between your audience (TikTok Live & WhatsApp), your computer (PC Macros, Spotify), and a fully autonomous 3D Avatar powered by AI.
 
 ---
